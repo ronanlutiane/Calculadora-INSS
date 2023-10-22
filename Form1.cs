@@ -267,11 +267,11 @@ namespace Calculadora_INSS
         public void CalculaINSSPrimeiraFaixa(int i, ref decimal contribuicaoTotal, ref decimal salario)
         {
 
-            aliquotaFaixa = aliquotas[i]; // Apenas para depuraçao
+            //aliquotaFaixa = aliquotas[i]; // Apenas para depuraçao
             contribuicaoFaixa = faixas[i] * (decimal)aliquotas[i];
             contribuicoesPorFaixa.Add(contribuicaoFaixa);
             contribuicaoTotal += contribuicaoFaixa;
-            salarioContribuicaoFaixa = faixas[i]; // Apenas para depuraçao
+            //salarioContribuicaoFaixa = faixas[i]; // Apenas para depuraçao
             salariosPorFaixa.Add(faixas[i]);
 
             // Define o limite da faixa anterior como o atual para continuar os calculos. . 
@@ -285,7 +285,7 @@ namespace Calculadora_INSS
         public void CalculaINSSSegundaFaixa(int i, ref decimal contribuicaoTotal, ref decimal salario)
         {
 
-            aliquotaFaixa = aliquotas[i]; // Apenas para depuraçao
+            //aliquotaFaixa = aliquotas[i]; // Apenas para depuraçao
             contribuicaoFaixa = (faixas[i] - limiteFaixaAnterior) * (decimal)aliquotas[i];
             contribuicoesPorFaixa.Add(contribuicaoFaixa);
             contribuicaoTotal += contribuicaoFaixa;
@@ -304,7 +304,7 @@ namespace Calculadora_INSS
         public void CalculaINSSTerceiraFaixa(int i, ref decimal contribuicaoTotal, ref decimal salario)
         {
 
-            aliquotaFaixa = aliquotas[i]; // Apenas para depuraçao
+            //aliquotaFaixa = aliquotas[i]; // Apenas para depuraçao
             contribuicaoFaixa = (faixas[i] - limiteFaixaAnterior) * (decimal)aliquotas[i];
             contribuicoesPorFaixa.Add(contribuicaoFaixa);
             contribuicaoTotal += contribuicaoFaixa;
@@ -326,7 +326,7 @@ namespace Calculadora_INSS
         {
 
             // Calcula a contribuição da faixa atual usando o residuo entre o salario e a faixa anterior
-            aliquotaFaixa = aliquotas[i]; // Apenas para depuraçao
+            //aliquotaFaixa = aliquotas[i]; // Apenas para depuraçao
             decimal contribuicaoUltimaFaixa = salario * (decimal)aliquotas[i];
 
             contribuicoesPorFaixa.Add(contribuicaoUltimaFaixa);
@@ -352,7 +352,7 @@ namespace Calculadora_INSS
         //Monta a mensagem com os dados do processamento que sera exibida ao usuario. 
         private string MontarMensagem(decimal contribuicaoTotal, List<decimal> contribuicoesPorFaixa, List<decimal> salariosPorFaixa)
         {
-            string mensagem = $"O valor do INSS Calculado foi de: R$ {contribuicaoTotal} \n\n"; // Alterado de concatenaçao de strings para interpolação por se tratar de melhor prática. 
+            string mensagem = $"O valor do INSS Calculado foi de: R$ {Math.Round(contribuicaoTotal,2)} \n\n"; // Alterado de concatenaçao de strings para interpolação por se tratar de melhor prática. 
             mensagem += "Contribuições por Faixa:\n"; // Testar e ver se essa linha ainda funciona, se nao, mudar para interpolação como acima. 
             for (int i = 0; i < contribuicoesPorFaixa.Count; i++)
             {
